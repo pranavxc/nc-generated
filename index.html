@@ -65,8 +65,11 @@ const NodeTypes = {
     
 
     // bind handlers
-    try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
-try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+    try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
+try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
+try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
+try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
+try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
 try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
 try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
 try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
@@ -83,7 +86,7 @@ try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
         };
 
         return {
-          nodeList: [{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"}],
+          nodeList: [{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"}],
           handleBtnClick,
           NodeTypes
         }
