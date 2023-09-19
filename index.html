@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>My Tauri App</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.1.12/dist/vuetify.min.css" />
 </head>
 <body>
 <div id="app">
@@ -40,11 +41,18 @@
               />
             </div>
 
+
+
 </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.1.12/dist/vuetify.min.js"></script>
   <script></script>
   <script>
     const { createApp, ref, reactive } = Vue;
+const { createApp } = Vue
+const { createVuetify } = Vuetify
+
+const vuetify = createVuetify()
 
 
 const NodeTypes = {
@@ -65,14 +73,7 @@ const NodeTypes = {
     
 
     // bind handlers
-    try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
-try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
-try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
-try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
-try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
-try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
-try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
-try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+    
   }`)()
           } catch (e) {
             console.error(e)
@@ -86,12 +87,12 @@ try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
         };
 
         return {
-          nodeList: [{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Label","type":"text"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"}],
+          nodeList: [],
           handleBtnClick,
           NodeTypes
         }
       }
-    }).mount('#app')
+    }).use(vuetify)..mount('#app')
   </script>
 </body>
 </html>
