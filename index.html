@@ -59,6 +59,8 @@
     // bind handlers
     try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
 try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
   }`)()
           } catch (e) {
             console.error(e)
@@ -72,18 +74,7 @@ try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
         },
 
         return {
-          nodeList: [
-  {
-    "name": "Button ",
-    "handler": "button",
-    "type": "button"
-  },
-  {
-    "name": "Button ",
-    "handler": "button",
-    "type": "button"
-  }
-],
+          nodeList: [{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"}],
           handleBtnClick
         }
       }
