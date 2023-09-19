@@ -5,17 +5,86 @@
   <title>My Tauri App</title>
 </head>
 <body>
-<div id="app">{{ message }}</div>
+<div id="app">
+
+  <div style=" flex-grow: 1">
+            <div v-for="(meta, i) in nodeList" :key="i">
+
+              <button
+                  @click="handleBtnClick($event, meta)"
+                  @dblclick="addHandlerIfNotExists(meta)"
+                  class="nc-btn"
+                  :class="{
+          selected: selectedNode === meta
+            }"
+                  v-if="meta.type === NodeTypes.BUTTON"
+              > {{ meta.name }}
+              </button>
+<div
+                  @click="handleBtnClick($event, meta)"
+                  class="nc-btn"
+                  :class="{
+          selected: selectedNode === meta
+            }"
+                  v-if="meta.type === NodeTypes.TEXTAREA"
+              > {{ meta.name }}
+              </div>
+
+              <input
+                  @click="handleBtnClick($event, meta)"
+                  class="nc-btn"
+                  :class="{
+          selected: selectedNode === meta
+            }"
+                  v-if="meta.type === NodeTypes.INPUT"
+              />
+            </div>
+
+</div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script></script>
   <script>
-    const { createApp, ref } = Vue;
+    const { createApp, ref, reactive } = Vue;
 
     createApp({
       setup() {
-        const message = ref('Hello vue!')
+        const handlerMapping = reactive({})
+
+        try {
+          new Function(
+              `
+  return function testFn(self){
+    
+
+    // bind handlers
+    try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+  }`)()
+          } catch (e) {
+            console.error(e)
+          }
+
+
+        const handleBtnClick = (event, meta) => {
+          if (handlerMapping[meta.handler]) {
+            handlerMapping[meta.handler].bind(this)(event)
+          }
+        },
+
         return {
-          message
+          nodeList: [
+  {
+    "name": "Button ",
+    "handler": "button",
+    "type": "button"
+  },
+  {
+    "name": "Button ",
+    "handler": "button",
+    "type": "button"
+  }
+],
+          handleBtnClick
         }
       }
     }).mount('#app')
