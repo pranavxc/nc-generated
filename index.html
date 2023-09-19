@@ -7,41 +7,67 @@
 </head>
 <body>
 <div id="app">
+  <div id="app">
+    <v-layout class="rounded rounded-md">
+
+      <v-main class="d-flex align-center justify-center text-caption" style="min-height: 300px;">
 
   <div style=" flex-grow: 1">
             <div v-for="(meta, i) in nodeList" :key="i">
 
-              <button
-                  @click="handleBtnClick($event, meta)"
-                  @dblclick="addHandlerIfNotExists(meta)"
-                  class="nc-btn"
-                  :class="{
-          selected: selectedNode === meta
-            }"
-                  v-if="meta.type === NodeTypes.BUTTON"
-              > {{ meta.name }}
-              </button>
-<div
-                  @click="handleBtnClick($event, meta)"
-                  class="nc-btn"
-                  :class="{
-          selected: selectedNode === meta
-            }"
-                  v-if="meta.type === NodeTypes.TEXTAREA"
-              > {{ meta.name }}
-              </div>
+                     <div style=" flex-grow: 1; display: flex; gap:8px; flex-direction: column; padding:10px">
+                <div v-for="(meta, i) in nodeList" :key="i">
 
-              <input
-                  @click="handleBtnClick($event, meta)"
-                  class="nc-btn"
-                  :class="{
+                  <v-btn size="small" class="text-capitalize"
+                      @click="handleBtnClick($event, meta)"
+                      @dblclick="addHandlerIfNotExists(meta)"
+                      :class="{
+                    selected: selectedNode === meta
+                      }"
+                      v-if="meta.type === NodeTypes.BUTTON"
+                  > {{ meta.name }}
+                  </v-btn>
+                  <v-textarea
+                      @dblclick="selectedNode = meta"
+                      density="compact"
+                      variant="outlined"
+                      class="nc-btn"
+                      :label="meta.name"
+                      :class="{
           selected: selectedNode === meta
             }"
-                  v-if="meta.type === NodeTypes.INPUT"
-              />
+                      v-if="meta.type === NodeTypes.TEXTAREA"
+                  >
+                  </v-textarea>
+                  <div
+                      @dblclick="selectedNode = meta"
+                      density="compact"
+                      variant="outlined"
+                      class="p-2"
+                      :class="{
+                        selected: selectedNode === meta
+                      }"
+                      v-if="meta.type === NodeTypes.TEXT"
+                  >
+                    {{ meta.name }}
+                  </div>
+
+                  <v-text-field
+                      @dblclick="selectedNode = meta"
+                      density="compact"
+                      variant="outlined"
+                      @click="handleBtnClick($event, meta)"
+                      :class="{
+          selected: selectedNode === meta
+            }"
+                      v-if="meta.type === NodeTypes.INPUT"
+                  />
+                </div>
+              </div>
             </div>
 
-
+</v-main>
+</v-layout>
 
 </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -73,7 +99,7 @@ const NodeTypes = {
     
 
     // bind handlers
-    
+    try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
   }`)()
           } catch (e) {
             console.error(e)
@@ -87,7 +113,7 @@ const NodeTypes = {
         };
 
         return {
-          nodeList: [],
+          nodeList: [{"name":"Button ","handler":"button","type":"button"}],
           handleBtnClick,
           NodeTypes
         }
