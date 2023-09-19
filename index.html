@@ -72,10 +72,8 @@
 </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@3.1.12/dist/vuetify.min.js"></script>
-  <script></script>
   <script>
     const { createApp, ref, reactive } = Vue;
-const { createApp } = Vue
 const { createVuetify } = Vuetify
 
 const vuetify = createVuetify()
@@ -97,9 +95,17 @@ const NodeTypes = {
               `
   return function testFn(self){
     
+function button(event) {
+  console.log('Button  clicked')
+}
+
 
     // bind handlers
     try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(undefined) handlerMapping[undefined] = undefined.bind(self); } catch { }
+try { if(button_4) handlerMapping["button_4"] = button_4.bind(self); } catch { }
+try { if(textarea) handlerMapping["textarea"] = textarea.bind(self); } catch { }
   }`)()
           } catch (e) {
             console.error(e)
@@ -113,7 +119,7 @@ const NodeTypes = {
         };
 
         return {
-          nodeList: [{"name":"Button ","handler":"button","type":"button"}],
+          nodeList: [{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Label","type":"text"},{"name":"Button 4","handler":"button_4","type":"input"},{"name":"Textarea","handler":"textarea","type":"textarea"}],
           handleBtnClick,
           NodeTypes
         }
