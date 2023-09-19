@@ -46,6 +46,14 @@
   <script>
     const { createApp, ref, reactive } = Vue;
 
+
+const NodeTypes = {
+  BUTTON: 'button',
+  INPUT: 'input',
+  TEXTAREA: 'textarea',
+  TEXT: 'text',
+}
+
     createApp({
       setup() {
         const handlerMapping = reactive({})
@@ -58,6 +66,8 @@
 
     // bind handlers
     try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
+try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
 try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
 try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
   }`)()
@@ -73,8 +83,9 @@ try { if(button) handlerMapping["button"] = button.bind(self); } catch { }
         };
 
         return {
-          nodeList: [{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"}],
-          handleBtnClick
+          nodeList: [{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"},{"name":"Button ","handler":"button","type":"button"}],
+          handleBtnClick,
+          NodeTypes
         }
       }
     }).mount('#app')
